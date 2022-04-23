@@ -1,0 +1,26 @@
+- var data = allProducts
+
+html
+    include includes/head.pug
+    body
+        include includes/nav.pug
+        if data
+            table(class="table table-light")
+                thead
+                    tr 
+                        th(class="text-center") Titulo 
+                        th(class="text-center") Precio 
+                        th(class="text-center") Vista previa 
+                        th(class="text-center") Accion
+                tbody
+                each objeto in data
+                    tr
+                        th(class="align-middle text-center")= objeto.title
+                        td(class="text-center")="$" + objeto.price
+                        div(class="image-container")
+                            td(class="text-center") 
+                                img(src=objeto.thumbnail, alt="Imagen del producto" class="img-thumbnail", width="100")
+                        td(class="text-center") 
+                            button(class="btn btn-danger")="Eliminar"
+        else
+            h1.red No hay productos
